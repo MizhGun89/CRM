@@ -1,0 +1,507 @@
+.overlay,
+.overlay-delete,
+.overlay-edit {
+    opacity: 0;
+    visibility: hidden;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 20;
+    transition: .5s all;
+}
+
+/* .overlay-edit {
+    opacity: 1;
+    visibility: visible;
+} */
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-y {
+    overflow-y: auto;
+}
+
+.modal-win {
+    width: 100%;
+    max-width: 450px;
+    min-height: 400px;
+    max-height: 580px;
+
+    position: fixed;
+    top: calc(50% - 250px);
+    left: calc(50% - 200px);
+    z-index: 30;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    padding: 24px 30px;
+    background-color: #FFFFFF;
+    transition: .5s opacity;
+    opacity: 0;
+}
+
+.modal-win__edit {
+    transition: .5s opacity;
+}
+
+.modal-win__delete {
+    max-width: 450px;
+    min-height: 215px;
+}
+
+.modal-open {
+    opacity: 1;
+    visibility: visible;
+    overflow-y: visible;
+    /* transition: 1s all; */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.modal-title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+
+    color: #333333;
+}
+
+.modal__close:hover svg path {
+    fill: #9873FF;
+}
+
+.modal__close:active svg path {
+    fill: #885dff;
+}
+
+.modal-body__input {
+    width: 390px;
+    height: 25px;
+    margin-bottom: 35px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+
+    border: none;
+    border-bottom: 1px solid #C8C5D1;
+
+    color: #B0B0B0;
+}
+
+.placeholder-box {
+    display: block;
+    position: relative;
+    /* margin: 20px 0; */
+}
+
+.placeholder-box input {
+    width: 390px;
+    height: 25px;
+    margin-bottom: 35px;
+    /* padding: 15px; */
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+
+    border: none;
+    border-bottom: 1px solid #C8C5D1;
+}
+
+.placeholder-box:hover input,
+.placeholder-box:active input,
+.placeholder-box:focus input,
+.placeholder-box:focus-visible input,
+.placeholder-box:focus-within input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #C8C5D1;
+}
+
+.placeholder-box input:invalid+.placeholder-text {
+    display: block;
+}
+
+.add-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    min-height: 35px;
+    margin-left: -30px;
+    margin-bottom: 25px;
+    background-color: rgba(200, 197, 209, 0.3);
+    /* opacity: 0; */
+    /* transition: transform .8s; */
+}
+
+.add-contact--open {
+    padding: 25px 30px;
+}
+
+
+.add-contact__btn {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    color: #333333;
+
+    background-image: url(../img/add-contact-icon.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    transition: color .3s, background .3s;
+}
+
+.add-contact__btn:hover {
+    color: #9873FF;
+    background-image: url(../img/add-contact-icon-hover.svg);
+}
+
+
+.modal-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 147px;
+    height: 44px;
+    margin-bottom: 5px;
+    
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #FFFFFF;
+    
+    background: #9873FF;
+
+    transition: all .3s;
+}
+
+.btn-save:hover {
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.15);
+    background-color: #B89EFF;
+}
+
+.btn-save:active {
+    background-color: #8052FF;
+ }
+
+.btn-cancel {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    
+    text-decoration-line: underline;
+    color: #333333;
+}
+
+.btn-cancel:hover {
+    color: #9873FF;
+}
+
+.btn-cancel:active {
+    color: #885dff;
+}
+
+
+/* Выпадающий список */
+.add-contact__item,
+.add-contact__item-edit {
+    display: flex;
+    position: relative;
+    margin-bottom: 15px;
+    align-self: flex-start;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.add-contact__item--open {
+    opacity: 1;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: auto;
+    vertical-align: 0.255em;
+    content: url(../img/dropdown-close.svg);
+    border: none;
+    transition: transform .15s;
+}
+
+.dropdown-toggle.show::after {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    width: 123px;
+    height: 37px;
+    background-color: #E7E5EB;
+}
+
+.dropdown-menu {
+    min-width: 123px;
+    width: 123px;
+    padding: 0;
+
+    transform: translate(0px, 36px) !important;
+
+    border-radius: 0;
+    background-color: #E7E5EB;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.dropdown-item {
+    padding-top: 10px;
+}
+
+.dropdown-item:last-of-type {
+    padding-bottom: 10px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    width: 123px;
+    height: 37px;
+    padding: 0 12px;
+    background-color: #E7E5EB;
+    border: 1px solid #C8C5D1 !important;
+    border-radius: 0px;
+    outline: none;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.add-contact__input {
+    position: relative;   
+    width: 240px;
+    margin-left: -1px;
+    padding-left: 12px;
+    border: 1px solid #C8C5D1;
+    outline: none;
+}
+
+.add-contact__delete-btn {
+    position: relative;
+    width: 27px;
+    height: 37px;
+    margin-left: -1px;
+    background-image: url(../img/icon-delete-contact.svg);
+    transition: background .3s ;
+}
+
+.add-contact__delete-btn:hover {
+    background-image: url(../img/icon-delete-contact-hover.svg);
+}
+
+.add-contact__delete-btn::after {
+    content: 'Удалить контакт';
+    position: absolute;
+    top: -30px;
+    left: -10%;
+    width: 133px;
+
+    transform: translateX(-50%);    
+
+    padding: 7px 11px;
+    background-color: #333333;
+
+    font-weight: 700;
+    font-size: 12px;
+    color: #FFFFFF;
+    pointer-events: none;
+
+    transition: opacity .3s ease;
+    opacity: 0;
+    z-index: 5;
+}
+
+.add-contact__delete-btn:hover::after {
+    opacity: 1;
+}
+
+/* modal delete */
+.modal-header__delete {
+    margin-bottom: 11px;
+}
+
+.modal-title {
+    margin-left: 113px;
+}
+
+.modal-body__delete {
+    margin-bottom: 25px;
+    align-self: center;
+    max-width: 275px;
+}
+
+/* Edit modal */
+.modal-title {
+    margin-left: 0;
+}
+
+.modal-edit__title {
+    margin-right: 9px;
+}
+
+.modal-edit__id {
+    justify-content: flex-start;
+
+    font-weight: 400;
+    font-size: 12px;
+    color: #B0B0B0;
+}
+
+/* Плейсхолдер */
+.text-field {
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.text-field:last-child {
+    margin-bottom: 25px;
+}
+
+.text-field__inp {
+    position: relative;
+    width: 100%;
+    padding: 5px 0;
+    border: 0;
+    outline: none;
+    border-radius: 0;
+    appearance: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #333333;
+    border-bottom: 1px solid #C8C5D1;
+    transition: border-color .3s, border .3s;
+}
+
+.error .text-field__inp {
+    border-bottom: 1px solid #F06A4D;
+}
+
+.error-label {
+    position: absolute;
+    left: 0;
+    top: 34px;
+
+    font-size: 12px;
+    color: #F06A4D;
+}
+
+.placeholder-text {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #B0B0B0;
+
+    cursor: text;
+    user-select: none;
+}
+
+.text-field__placeholder {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #B0B0B0;
+    pointer-events: none;
+    transform-origin: left;
+    transition: top .3s, transform .3s;
+}
+
+.text-field__inp:focus+.text-field__placeholder,
+.text-field__inp:not(:focus):valid+.text-field__placeholder {
+    top: -15px;
+    transform: scale(.85);
+}
+
+.new-contact_input-container {
+    display: flex;
+    position: relative;
+}
+
+@media (max-width: 320px) {
+    .modal-win {
+        width: 300px;
+        height: 300px;
+        min-height: 300px;
+        max-height: 580px;
+        top: calc(50% - 130px);
+        left: calc(50% - 150px);
+        padding: 24px 15px;
+        /* overflow-y: scroll; */
+    }
+    .text-field {
+        /* width: 100%; */
+        height: 30px;
+        margin-bottom: 20px;
+    }
+    .add-contact {
+        width: 300px;
+        margin-left: -15px;
+    }
+    .dropdown,
+    .dropdown-item,
+    .dropdown-menu {
+        width: 110px;
+        min-width: 110px;
+    }
+    .dropdown-item {
+        padding-left: 12px;
+    }
+    .add-contact__input {
+        width: 133px;
+    }
+    .dropdown-toggle::after {
+        margin-left: 30px;
+    }
+    .add-contact--open {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

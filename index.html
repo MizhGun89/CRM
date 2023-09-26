@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/modal.css">
+</head>
+
+<body>
+    <header class="header-container">
+        <div class="header">
+            <img class="header__logo" src="img/header-logo.svg" alt="Логотип skb">
+            <input 
+                class="header_input" 
+                placeholder="Введите запрос"    
+                type="text">
+        </div>
+    </header>
+    <main class="main-container">
+        <div class="main">
+            <h2 class="tytle">
+                Клиенты
+            </h2>
+            <ul class="nav">
+                <li class="nav-item" id="column-id">
+                    <p>
+                        ID
+                    </p>
+                    <img class="nav-item__id-icon" src="img/arrow-up.svg" alt="Сортировка по ID">
+                </li>
+                <li class="nav-item nav-item__name column-fio">
+                    <p>
+                        Фамилия Имя Отчество
+                    </p>
+                </li>
+                <li class="nav-item nav-item__date-create">
+                    <p>
+                        Дата и время создания
+                    </p>
+                    <img class="nav-item__date-create-icon" src="img/arrow-up.svg" alt="Сортировка по ID">
+                </li>
+                <li class="nav-item nav-item__last-create">
+                    <p>
+                        Последние изменения
+                    </p>
+                    <img class="nav-item__last-create-icon" src="img/arrow-up.svg" alt="Сортировка по ID">
+                </li>
+                <li class="nav-item nav-item__contacts">
+                    <p>
+                        Контакты
+                    </p>
+                </li>
+                <li class="nav-item nav-item__action">
+                    <p>
+                        Действия
+                    </p>
+                </li>
+            </ul>
+            <div class="user-list">
+                <div class="spinner-border spinner-border__main" role="status">
+                    <span class="visually-hidden">Загрузка...</span>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn-add">
+            <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M14.5 8C16.71 8 18.5 6.21 18.5 4C18.5 1.79 16.71 0 14.5 0C12.29 0 10.5 1.79 10.5 4C10.5 6.21 12.29 8 14.5 8ZM5.5 6V3H3.5V6H0.5V8H3.5V11H5.5V8H8.5V6H5.5ZM14.5 10C11.83 10 6.5 11.34 6.5 14V16H22.5V14C22.5 11.34 17.17 10 14.5 10Z"
+                    fill="#9873FF" />
+            </svg>
+            Добавить клиента
+        </button>
+    </main>
+    <!-- Modal add-->
+    <div class="overlay">
+    </div>
+    <!-- Modal delete -->
+    <div class="overlay-delete">
+        <div class="modal-win modal-win__delete">
+            <div class="modal-content ">
+                <div class="modal-header modal-header__delete">
+                    <h5 class="modal-title">Удалить клиента</h5>
+                    <button type="button" class="modal__close btn-reset ">
+                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M16.2332 1.73333L15.2665 0.766664L8.49985 7.53336L1.73318 0.766696L0.766515 1.73336L7.53318 8.50003L0.766542 15.2667L1.73321 16.2333L8.49985 9.46669L15.2665 16.2334L16.2332 15.2667L9.46651 8.50003L16.2332 1.73333Z"
+                                fill="#B0B0B0" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body modal-body__delete">
+                    <p>Вы&nbsp;действительно хотите удалить данного клиента?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-save btn-reset" id="deleteBtn">Удалить</button>
+                    <button type="button" class="btn-cancel btn-reset">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal edit -->
+    <div class="overlay-edit">
+    </div>
+
+    <script defer src="lib/bootstrap.bundle.min.js"></script>
+    <script defer src="lib/inputmask.js"></script>
+    <script defer src="script/script.js"></script>
+</body>
+
+</html>
